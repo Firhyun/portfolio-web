@@ -1,4 +1,5 @@
 {
+  "name": "ostudiio-gd",
   "rewrites": [
     {
       "source": "/(.*)",
