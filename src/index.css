@@ -1,0 +1,128 @@
+@import 'tailwindcss';
+
+/* ── fonts ───────────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Inter:Bold';
+  font-style: normal;
+  font-weight: 700;
+  src: url('https://static.figma.com/font/Inter_1') format('woff2');
+}
+@font-face {
+  font-family: 'Inter:Medium';
+  font-style: normal;
+  font-weight: 500;
+  src: url('https://static.figma.com/font/Inter_1') format('woff2');
+}
+@font-face {
+  font-family: 'Host Grotesk:Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://static.figma.com/font/HostGrotesk_wght__1') format('woff2');
+}
+@font-face {
+  font-family: 'Host Grotesk:Bold';
+  font-style: normal;
+  font-weight: 700;
+  src: url('https://static.figma.com/font/HostGrotesk_wght__1') format('woff2');
+}
+@font-face {
+  font-family: 'Host Grotesk:Medium';
+  font-style: normal;
+  font-weight: 500;
+  src: url('https://static.figma.com/font/HostGrotesk_wght__1') format('woff2');
+}
+
+/* ── reset ───────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Prevent scrollbar jump */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* ── project page: keep black bg for Figma imports that don't set it ────── */
+[data-name="cemeto"],
+[data-name="goodluckmom"],
+[data-name="personal"],
+[data-name="saereal"],
+[data-name="marrymint"] {
+  background: #000 !important;
+}
+
+/* Project pages: remove pointer-events from individual images so the
+   ProjectDetail wrapper handles cursor */
+[data-name="cemeto"] img,
+[data-name="goodluckmom"] img,
+[data-name="personal"] img,
+[data-name="saereal"] img,
+[data-name="marrymint"] img {
+  pointer-events: auto;
+}
+
+/* ── keyframes ───────────────────────────────────────────────────────────── */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes maskReveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── focus styles ────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid #171717;
+  outline-offset: 3px;
+}
+
+/* ── smooth scroll ───────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── profile page CTA hover ─────────────────────────────────────────────── */
+.cta-outline {
+  transition: background 250ms ease, color 250ms ease, padding 250ms ease;
+}
+.cta-outline:hover {
+  background: #171717;
+  color: #fff;
+  padding-inline: 38px;
+}
+
+/* ── nav underline animation ─────────────────────────────────────────────── */
+.nav-underline::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* ── reduced motion ──────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
